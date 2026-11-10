@@ -100,7 +100,7 @@ t2:"Jeg, {navn}, søker på stillingen som {stilling}. Jeg fant annonsen på {ki
 t3:"Jeg heter {navn}, og jeg (nåværende jobb eller aktivitet, f.eks. er nå deltaker på helseassistentkurs, norskkurs, Jobbsjansen, hjemmeværende, frivillig arbeid). Jeg kom til Norge i (årstall). Jeg er en positiv og motivert person som liker å lære nye ting. (Hvilke egenskaper spør arbeidsgiver etter i annonsen?)",
 t4:"Tidligere har jeg jobbet som (kort om tidligere jobber eller erfaringer). Jeg har erfaring med (relevante oppgaver eller ferdigheter). Jeg er utdannet som (utdanning).",
 t5:"Jeg tror jeg passer godt til denne jobben fordi jeg er (f.eks. pålitelig, samarbeidsvillig, lærevillig, omsorgsfull …). Jeg liker å jobbe med (arbeidsoppgaver), og jeg ønsker å bidra positivt på arbeidsplassen.",
-t6:"Helseassistentkurset har fokus på muntlig og skriftlig arbeidsnorsk, arbeidslivskunnskap, digitale ferdigheter og praksis ved enhet i helse, Molde/Vestnes kommune.\nJeg håper dere vil vurdere min søknad. Jeg kan komme på intervju når det passer dere."
+t6:"Helseassistentkurset har fokus på muntlig og skriftlig arbeidsnorsk, arbeidslivskunnskap, digitale ferdigheter og praksis ved enhet i helse, Molde/Vestnes kommune.\nJeg håper dere vil vurdere min søknad. Jeg kan komme på intervju når det passer dere.\nMed vennlig hilsen\n{navn}"
 };
 var $=function(i){return document.getElementById(i)};
 var msg=function(t){$('msg').textContent=t};
@@ -127,10 +127,8 @@ function blocks(){
   line('Søknad på stilling som '+v('stilling','(stillingstittel)'),true,true);
   ['t2','t3','t4','t5','t6'].forEach(function(k){
     var parts=sub($(k).value).split(/\n+/).filter(function(x){return x.trim()});
-    parts.forEach(function(p,i){line(p,i===parts.length-1)});
+    parts.forEach(function(p,i){line(p,i===parts.length-1||/^Med vennlig hilsen/.test(parts[i+1]||''))});
   });
-  line('Med vennlig hilsen');
-  line(v('navn','(Fornavn Etternavn)'));
   return b;
 }
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
