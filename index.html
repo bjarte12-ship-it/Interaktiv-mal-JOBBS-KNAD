@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jobbsøknad – Helseassistent (tilkalling)</title>
+<title>Jobbsøknad – butikkmedarbeider</title>
 <style>
 :root{--bg:#f6f5f2;--card:#fff;--ink:#1d2433;--mute:#5d6678;--line:#d9dce3;--acc:#1f5f8b;--accink:#fff;--mark:#fff1a8;--markink:#5a4600;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -42,7 +42,7 @@ button.primary{background:var(--acc);color:var(--accink);border-color:var(--acc)
 </head>
 <body>
 <header>
-<h1>Jobbsøknad – helseassistent (tilkalling)</h1>
+<h1>Jobbsøknad – butikkmedarbeider</h1>
 <p>Fyll ut feltene. Søknaden til høyre oppdateres mens du skriver. Gule felt (i parentes) er ikke fylt ut ennå.</p>
 </header>
 <div class="bar"><div>
@@ -68,8 +68,8 @@ button.primary{background:var(--acc);color:var(--accink);border-color:var(--acc)
 <div><label for="fpost">Postnummer og sted</label><input id="fpost"></div></div>
 <div class="row"><div><label for="dato">Dato</label><input id="dato" type="date" value="2026-11-16"></div>
 <div><label for="sted">Sted</label><input id="sted" value="Molde"></div></div>
-<label for="stilling">Stillingstittel</label><input id="stilling" value="Helseassistent (tilkalling)">
-<label for="kilde">Hvor fant du annonsen?</label><input id="kilde" placeholder="f.eks. arbeidsplassen.no, Finn.no, Molde kommune">
+<label for="stilling">Stillingstittel</label><input id="stilling" value="Butikkmedarbeider">
+<label for="kilde">Hvor fant du annonsen?</label><input id="kilde" value="arbeidsplassen.no" placeholder="f.eks. arbeidsplassen.no, Finn.no">
 </section>
 
 <section class="card"><h2><span>3</span>Innledning</h2>
@@ -97,10 +97,10 @@ button.primary{background:var(--acc);color:var(--accink);border-color:var(--acc)
 <script>
 var DEF={
 t2:"Jeg, {navn}, søker på stillingen som {stilling}. Jeg fant annonsen på {kilde}.",
-t3:"Jeg heter {navn}, og jeg (nåværende jobb eller aktivitet, f.eks. er nå deltaker på helseassistentkurs, norskkurs, Jobbsjansen, hjemmeværende, frivillig arbeid). Jeg kom til Norge i (årstall). Jeg er en positiv og motivert person som liker å lære nye ting. (Hvilke egenskaper spør arbeidsgiver etter i annonsen?)",
-t4:"Tidligere har jeg jobbet som (kort om tidligere jobber eller erfaringer). Jeg har erfaring med (relevante oppgaver eller ferdigheter). Jeg er utdannet som (utdanning).",
-t5:"Jeg tror jeg passer godt til denne jobben fordi jeg er (f.eks. pålitelig, samarbeidsvillig, lærevillig, omsorgsfull …). Jeg liker å jobbe med (arbeidsoppgaver), og jeg ønsker å bidra positivt på arbeidsplassen.",
-t6:"Helseassistentkurset har fokus på muntlig og skriftlig arbeidsnorsk, arbeidslivskunnskap, digitale ferdigheter og praksis ved enhet i helse, Molde/Vestnes kommune.\nJeg håper dere vil vurdere min søknad. Jeg kan komme på intervju når det passer dere.\nMed vennlig hilsen\n{navn}"
+t3:"Jeg heter {navn}, og jeg (nåværende jobb eller aktivitet, f.eks. er nå deltaker på norskkurs, Jobbsjansen, hjemmeværende, frivillig arbeid). Jeg kom til Norge i (årstall). Jeg er en positiv og motivert person som liker å lære nye ting. (Hvilke egenskaper spør arbeidsgiver etter i annonsen?)",
+t4:"Tidligere har jeg jobbet som (kort om tidligere jobber eller erfaringer). Jeg har erfaring med (f.eks. kundeservice, kasse, påfylling av varer, rydding, renhold). Jeg er utdannet som (utdanning).",
+t5:"Jeg tror jeg passer godt til denne jobben fordi jeg er (f.eks. pålitelig, serviceinnstilt, blid, strukturert, samarbeidsvillig, lærevillig …). Jeg liker å jobbe med (kunder, varer, kasse …), og jeg ønsker å bidra positivt på arbeidsplassen.",
+t6:"Jeg håper dere vil vurdere min søknad. Jeg kan komme på intervju når det passer dere.\nMed vennlig hilsen\n{navn}"
 };
 var $=function(i){return document.getElementById(i)};
 var msg=function(t){$('msg').textContent=t};
@@ -179,9 +179,10 @@ $('cp').onclick=function(){
 $('rs').onclick=function(){
   if(!confirm('Vil du tømme alle felt og starte på nytt?'))return;
   document.querySelectorAll('input').forEach(function(i){i.value=''});
-  $('dato').value='2026-11-16';$('sted').value='Molde';$('stilling').value='Helseassistent (tilkalling)';
+  $('dato').value='2026-11-16';$('sted').value='Molde';$('stilling').value='Butikkmedarbeider';$('kilde').value='arbeidsplassen.no';
   fill();render();msg('');
 };
+
 document.addEventListener('input',render);
 fill();render();
 try{
